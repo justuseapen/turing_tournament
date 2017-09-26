@@ -3,7 +3,7 @@ defmodule TuringTournamentWeb.UserController do
 
   alias TuringTournament.Accounts
   alias TuringTournament.Accounts.User
-
+  alias TuringTournamentWeb.Router.Helpers
   def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, "index.html", users: users)
@@ -19,7 +19,7 @@ defmodule TuringTournamentWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: TuringTournamentWeb.Router.Helpers.user_path(conn, :show, user))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -43,7 +43,7 @@ defmodule TuringTournamentWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to:  TuringTournamentWeb.Router.Helpers.user_path(conn, :show, user))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
@@ -55,6 +55,6 @@ defmodule TuringTournamentWeb.UserController do
 
     conn
     |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: user_path(conn, :index))
+    |> redirect(to: TuringTournamentWeb.Router.Helpers.user_path(conn, :index))
   end
 end

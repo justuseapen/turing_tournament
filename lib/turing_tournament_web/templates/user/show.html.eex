@@ -18,5 +18,5 @@
   </li>
 </ul>
 
-<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: user_path(@conn, :index) %></span>
+<span><%= link "Edit", to: Helpers.user_path(@conn, :edit, @user) %></span>
+<span><%= link "Back", to: Helpers.user_path(@conn, :index) %></span>

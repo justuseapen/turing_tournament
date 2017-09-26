@@ -2,6 +2,7 @@ defmodule TuringTournamentWeb.SessionController do
   use TuringTournamentWeb, :controller
 
   alias TuringTournament.Accounts
+  alias TuringTournamentWeb.Router.Helpers
 
   def new(conn, _) do
     render(conn, "new.html")
@@ -18,7 +19,7 @@ defmodule TuringTournamentWeb.SessionController do
       {:error, :unauthorized} ->
         conn
         |> put_flash(:error, "Bad email/password combination")
-        |> redirect(to: session_path(conn, :new))
+        |> redirect(to: TuringTournamentWeb.Router.Helpers.session_path(conn, :new))
     end
   end
   

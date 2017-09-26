@@ -2,6 +2,7 @@ defmodule TuringTournamentWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
+  channel "lobby:*", TuringTournamentWeb.LobbyChannel
   channel "match:*", TuringTournamentWeb.MatchChannel
   # channel "room:*", TuringTournamentWeb.RoomChannel
 
